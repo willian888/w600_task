@@ -1,4 +1,9 @@
 <?php
+/**
+ * 号码抓取
+ * 号码添加
+ * 
+ */
 require realpath(dirname(__FILE__). '/../w600/phpcms') .DIRECTORY_SEPARATOR. 'base.php';
 ob_end_clean ();
 pc_base::load_sys_class ( 'basecli', '', 0 );
@@ -30,10 +35,10 @@ class cleardata extends basecli {
 	 */
 	protected function _runCli() {
 		// 彩种ID
-		$iClearType = intval ( $this->aArgv [1] );
+		$iLotteryId = intval ( $this->aArgv [1] );
 
 		// 检查是否已有相同CLI在运行中
-		$this->sLockFilename = $sLocksFileName = 'cleartype_' . $iClearType . '.locks';
+		$this->sLockFilename = $sLocksFileName = 'lottery_' . $iLotteryId . '.locks';
 
 		if (file_exists ( $sLocksFileName )) {
 			// 超过10分钟，删除锁文件
@@ -62,9 +67,9 @@ class cleardata extends basecli {
 		$KJ_api = new kj_api ();
 
 		foreach ( $aGames as $k => $v ) {
-			/* if($v['id'] != 4){
+			if ($iLotteryId !=0 && $v ['id'] != $iLotteryId) {
 				continue;
-				} */
+			} 
 
 			$sMethod = 'kj_' . $v ['name_en'];
 			if (is_callable ( array ($KJ_api,$sMethod ) )) {
