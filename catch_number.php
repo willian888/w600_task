@@ -2,6 +2,8 @@
 /**
  * 号码抓取
  * 号码添加
+ * 参数1    彩种Id
+ * 		   默认 为0，全部
  * 
  */
 require realpath(dirname(__FILE__). '/../w600/phpcms') .DIRECTORY_SEPARATOR. 'base.php';
