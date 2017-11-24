@@ -6,7 +6,7 @@
  * 		    默认 为0，全部
  * 
  */
-require realpath(dirname(__FILE__). '/../w600/phpcms') .DIRECTORY_SEPARATOR. 'base.php';
+require '/var/w600/phpcms/base.php';
 ob_end_clean ();
 pc_base::load_sys_class ( 'basecli', '', 0 );
 class cleardata extends basecli {
@@ -46,7 +46,7 @@ class cleardata extends basecli {
 		$sTaskLableKey = $this->sTaskPrefix . $sTaskLable;
 		
 		// 检查是否已有相同CLI在运行中
-		$this->sLockFilename = $sLocksFileName = 'lottery_' . $iLotteryId . '.locks';
+		$this->sLockFilename = $sLocksFileName = 'lottery_' . $sTaskLable . '.locks';
 		
 		if (file_exists ( $sLocksFileName )) {
 			// 超过10分钟，删除锁文件
@@ -80,9 +80,9 @@ class cleardata extends basecli {
 			
 			if ($aResult ['isSuccess']) {
 				$iNum++;
-				echo '--' . str_pad ( $aData ['_command'], 20, '-', STR_PAD_RIGHT ) . str_pad ( $aData ['game_name'], 12, '-', STR_PAD_RIGHT ) . "---$aData[number]---成功!!-0028\n";
+				echo '--' . str_pad ( $aData ['_command'], 15, '-', STR_PAD_RIGHT ) . str_pad ( $aData ['game_name'], 12, '-', STR_PAD_RIGHT ) . "---$aData[number]---成功!!-0028\n";
 			} else {
-				echo '--' . str_pad ( $aData ['_command'], 20, '-', STR_PAD_RIGHT ) . str_pad ( $aData ['game_name'], 12, '-', STR_PAD_RIGHT ) . "---$aData[number]---失败!!-0030\n";
+				echo '--' . str_pad ( $aData ['_command'], 15, '-', STR_PAD_RIGHT ) . str_pad ( $aData ['game_name'], 12, '-', STR_PAD_RIGHT ) . "---$aData[number]---失败!!-0030\n";
 			}
 		}
 		
