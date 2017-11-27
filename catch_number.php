@@ -6,7 +6,8 @@
  * 		   默认 为0，全部
  * 
  */
-require '/var/w600/phpcms/base.php';ob_end_clean ();
+require '/var/w600/phpcms/base.php';
+ob_end_clean ();
 pc_base::load_sys_class ( 'basecli', '', 0 );
 class cleardata extends basecli {
 
