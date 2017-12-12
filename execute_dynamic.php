@@ -62,13 +62,13 @@ class paySpend extends basecli {
 		
 		$this->bFinished = true;
 		
-		$oCurlHttp = pc_base::load_sys_class ( 'curl_http' );
+		$oCurlHttp = pc_base::load_sys_class ( 'curl' );
 		
 		$aData = array (
 				'_command' => $sCommand
 		);
 		
-		$aResult = curl_http::send ( $this->sPostUrl, $aData, 'post' );
+		$aResult = curl::send ( $this->sPostUrl, $aData, 'post' );
 		
 		if ($aResult ['isSuccess']) {
 			$iNum ++;

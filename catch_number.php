@@ -59,7 +59,7 @@ class cleardata extends basecli {
 		$oGameModel = pc_base::load_model ( 'lottery_game_model' );
 		$oSource = pc_base::load_model('lottery_catch_source_model');
 		$oGameCenter = pc_base::load_app_class('game_center','lottery');
-		$oCurlHttp = pc_base::load_sys_class ( 'curl_http' );
+		$oCurlHttp = pc_base::load_sys_class ( 'curl' );
 		//开奖api
 		include PC_PATH . 'modules/lottery/kj_api.php';
 		//入库api
@@ -103,7 +103,7 @@ class cleardata extends basecli {
 				$aData['number'] = $aLastIssue['number'];
 				$aData['balls'] = $sBall;
 
-				$aResult = curl_http::send ( $this->sPostUrl, $aData, 'post' );
+				$aResult = curl::send ( $this->sPostUrl, $aData, 'post' );
 
 					
 				if ($aResult ['isSuccess']) {

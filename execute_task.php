@@ -64,7 +64,7 @@ class cleardata extends basecli {
 		
 		pc_base::load_sys_class ( 'NewRedis','',0 );
 		
-		$oCurlHttp = pc_base::load_sys_class ( 'curl_http' );
+		$oCurlHttp = pc_base::load_sys_class ( 'curl' );
 		
 		$oNewRedis = new NewRedis();
 		$oNewRedis->setDatabase ('0');
@@ -76,7 +76,7 @@ class cleardata extends basecli {
 			
 			$aData = $oNewRedis->RpopJson($sTaskLableKey);
 			
-			$aResult = curl_http::send ( $this->sPostUrl, $aData, 'post' );
+			$aResult = curl::send ( $this->sPostUrl, $aData, 'post' );
 			
 			if ($aResult ['isSuccess']) {
 				$iNum++;
